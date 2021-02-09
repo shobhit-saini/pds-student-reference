@@ -5,7 +5,7 @@ int user_strlen(char *ptr)
     int counter = 0, i;
     for(i = 0; ptr[i]; i++)
         counter++;
-    return counter-1;
+    return counter;
 }
 int main()
 {
@@ -17,12 +17,15 @@ int main()
     // Dynamically allocate memory using malloc() 
     ptr = (char*)malloc(n * sizeof(char));
     
-    for(int i = 0; i < n; i++)
-    {
-        scanf("%c", &ptr[i]);
-    }
+    scanf(" %s", ptr);
   
     int len = user_strlen(ptr);
-    printf("Length of the string is %d", len);
+    
+    char* ptr_copy;
+    ptr_copy = (char*)malloc(len*sizeof(char));
+    ptr_copy = ptr;
+    
+    printf("%s", ptr_copy);
+
     return 0;
 }
