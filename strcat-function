@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+int user_strlen(char *ptr)
+{
+    int counter = 0, i;
+    for(i = 0; ptr[i]; i++)
+        counter++;
+    return counter;
+}
+
+int main()
+{
+    int n, i, m;
+    printf("Enter the size of the first string: ");
+    scanf("%d", &n);
+    
+    char *ptr, *qtr;
+    // Dynamically allocate memory using malloc() 
+    ptr = (char*)malloc(n * sizeof(char));
+    
+    scanf(" %s", ptr);
+    
+    printf("Enter the size of the second string: ");
+    scanf("%d", &m);
+    qtr = (char*)malloc(m * sizeof(char));
+    
+    scanf(" %s", qtr);
+    
+    int len1 = user_strlen(ptr);
+    int len2 = user_strlen(qtr);
+    char *ptr_qtr;
+    
+    ptr_qtr = (char*)malloc((len1+len2+1)*sizeof(char));
+    
+    for(i = 0; i < len1; i++)
+    {
+        ptr_qtr[i] = ptr[i];
+    }
+    
+    for(i = len1; i < len1+len2; i++)
+    {
+        ptr_qtr[i] = qtr[i-len1];
+    }
+    
+    printf("%s", ptr_qtr);
+    return 0;
+}
