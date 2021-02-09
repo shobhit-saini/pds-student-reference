@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+int user_strlen(char *ptr)
+{
+    int counter = 0, i;
+    for(i = 0; ptr[i]; i++)
+        counter++;
+    return counter-1;
+}
+int main()
+{
+    int n;
+    printf("Enter the size of an array: ");
+    scanf("%d", &n);
+    
+    char *ptr;
+    // Dynamically allocate memory using malloc() 
+    ptr = (char*)malloc(n * sizeof(char));
+    
+    for(int i = 0; i < n; i++)
+    {
+        scanf("%c", &ptr[i]);
+    }
+  
+    int len = user_strlen(ptr);
+    printf("Length of the string is %d", len);
+    return 0;
+}
